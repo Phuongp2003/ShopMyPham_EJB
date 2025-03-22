@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" 
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    
+    <!-- Character Encoding Filter -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>com.ptithcm.filter.CharacterEncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- Authentication Filter -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.ptithcm.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/cart/*</url-pattern>
+        <url-pattern>/order/*</url-pattern>
+        <url-pattern>/profile/*</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- EJB References -->
+    <ejb-local-ref>
+        <ejb-ref-name>ejb/ProductService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.ptithcm.ejb.ProductService</local>
+        <ejb-link>ProductServiceBean</ejb-link>
+    </ejb-local-ref>
+    
+    <ejb-local-ref>
+        <ejb-ref-name>ejb/CartService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.ptithcm.ejb.CartService</local>
+        <ejb-link>CartServiceBean</ejb-link>
+    </ejb-local-ref>
+    
+    <ejb-local-ref>
+        <ejb-ref-name>ejb/OrderService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.ptithcm.ejb.OrderService</local>
+        <ejb-link>OrderServiceBean</ejb-link>
+    </ejb-local-ref>
+    
+    <ejb-local-ref>
+        <ejb-ref-name>ejb/UserService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.ptithcm.ejb.UserService</local>
+        <ejb-link>UserServiceBean</ejb-link>
+    </ejb-local-ref>
+    
+    <ejb-local-ref>
+        <ejb-ref-name>ejb/ReviewService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.ptithcm.ejb.ReviewService</local>
+        <ejb-link>ReviewServiceBean</ejb-link>
+    </ejb-local-ref>
+    
+    <!-- Persistence Unit Reference -->
+    <persistence-context-ref>
+        <persistence-context-ref-name>persistence/cosmeticsPU</persistence-context-ref-name>
+        <persistence-unit-name>cosmeticsPU</persistence-unit-name>
+        <persistence-context-type>Transaction</persistence-context-type>
+    </persistence-context-ref>
+    
+    <!-- Persistence Context References -->
+    <persistence-context-ref>
+        <persistence-context-ref-name>com.ptithcm.ejb.CartServiceBean/em</persistence-context-ref-name>
+        <persistence-unit-name>cosmeticsPU</persistence-unit-name>
+        <persistence-context-type>Transaction</persistence-context-type>
+    </persistence-context-ref>
+    
+    <persistence-context-ref>
+        <persistence-context-ref-name>com.ptithcm.ejb.OrderServiceBean/em</persistence-context-ref-name>
+        <persistence-unit-name>cosmeticsPU</persistence-unit-name>
+        <persistence-context-type>Transaction</persistence-context-type>
+    </persistence-context-ref>
+    
+    <persistence-context-ref>
+        <persistence-context-ref-name>com.ptithcm.ejb.ReviewServiceBean/em</persistence-context-ref-name>
+        <persistence-unit-name>cosmeticsPU</persistence-unit-name>
+        <persistence-context-type>Transaction</persistence-context-type>
+    </persistence-context-ref>
+    
+    <persistence-context-ref>
+        <persistence-context-ref-name>com.ptithcm.ejb.ProductServiceBean/em</persistence-context-ref-name>
+        <persistence-unit-name>cosmeticsPU</persistence-unit-name>
+        <persistence-context-type>Transaction</persistence-context-type>
+    </persistence-context-ref>
+    
+    <persistence-context-ref>
+        <persistence-context-ref-name>com.ptithcm.ejb.UserServiceBean/em</persistence-context-ref-name>
+        <persistence-unit-name>cosmeticsPU</persistence-unit-name>
+        <persistence-context-type>Transaction</persistence-context-type>
+    </persistence-context-ref>
+    
+    <!-- Session Configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    
+    <!-- Welcome File -->
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Error Pages -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/error.jsp</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/error.jsp</location>
+    </error-page>
+    
+    <!-- Character Encoding -->
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+    
+    <!-- Resource References -->
+    <resource-ref>
+        <res-ref-name>jdbc/cosmetics</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <!-- Servlet Configuration -->
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.ptithcm.servlet.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>com.ptithcm.servlet.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/products/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.ptithcm.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.ptithcm.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.ptithcm.servlet.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cart/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>com.ptithcm.servlet.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.ptithcm.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+</web-app>

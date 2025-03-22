@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    
+    <persistence-unit name="cosmeticsPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/cosmetics</jta-data-source>
+        
+        <class>com.ptithcm.entity.User</class>
+        <class>com.ptithcm.entity.Product</class>
+        <class>com.ptithcm.entity.CartItem</class>
+        <class>com.ptithcm.entity.Order</class>
+        <class>com.ptithcm.entity.OrderItem</class>
+        <class>com.ptithcm.entity.Review</class>
+        
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        
+        <properties>
+            <!-- Connection Properties -->
+            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+            <property name="eclipselink.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            
+            <!-- Additional MySQL properties -->
+            <property name="eclipselink.jdbc.native-sql" value="true"/>
+            <property name="eclipselink.target-server" value="Glassfish"/>
+            
+            <!-- Schema generation - Explicit for MariaDB -->
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            
+            <!-- MariaDB specific optimizations -->
+            <property name="eclipselink.weaving" value="false"/>
+            <property name="eclipselink.jdbc.uppercase-columns" value="true"/>
+            
+            <!-- Cache configuration -->
+            <property name="eclipselink.cache.shared.default" value="false"/>
+            <property name="eclipselink.cache.size.default" value="0"/>
+            <property name="eclipselink.cache.type.default" value="None"/>
+            <property name="eclipselink.flush-clear.cache" value="Drop"/>
+            
+            <!-- Logging Configuration -->
+            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <property name="eclipselink.logging.timestamp" value="true"/>
+            <property name="eclipselink.logging.exceptions" value="true"/>
+            
+            <!-- Configure logging to use JavaLogger (routes to GlassFish server.log) -->
+            <property name="eclipselink.logging.logger" value="JavaLogger"/>
+            
+            <!-- Performance optimization -->
+            <property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
+            <property name="eclipselink.jdbc.batch-writing.size" value="1000"/>
+            <property name="eclipselink.jdbc.cache-statements" value="true"/>
+            <property name="eclipselink.jdbc.fetch-size" value="100"/>
+            
+            <!-- Connection pool -->
+            <property name="eclipselink.jdbc.connections.initial" value="1"/>
+            <property name="eclipselink.jdbc.connections.min" value="1"/>
+            <property name="eclipselink.jdbc.connections.max" value="20"/>
+        </properties>
+    </persistence-unit>
+</persistence>

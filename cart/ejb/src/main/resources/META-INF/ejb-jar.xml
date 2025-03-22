@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/ejb-jar_3_2.xsd"
+         version="3.2">
+         
+    <enterprise-beans>
+        <session>
+            <ejb-name>ProductServiceBean</ejb-name>
+            <ejb-class>com.ptithcm.ejb.ProductServiceBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            
+            <business-local>com.ptithcm.ejb.ProductService</business-local>
+            
+            <persistence-context-ref>
+                <persistence-context-ref-name>persistence/CosmeticsPU</persistence-context-ref-name>
+                <persistence-unit-name>CosmeticsPU</persistence-unit-name>
+            </persistence-context-ref>
+        </session>
+        
+        <session>
+            <ejb-name>CartServiceBean</ejb-name>
+            <ejb-class>com.ptithcm.ejb.CartServiceBean</ejb-class>
+            <session-type>Stateful</session-type>
+            <transaction-type>Container</transaction-type>
+            
+            <business-local>com.ptithcm.ejb.CartService</business-local>
+            
+            <persistence-context-ref>
+                <persistence-context-ref-name>persistence/CosmeticsPU</persistence-context-ref-name>
+                <persistence-unit-name>CosmeticsPU</persistence-unit-name>
+            </persistence-context-ref>
+        </session>
+        
+        <session>
+            <ejb-name>OrderServiceBean</ejb-name>
+            <ejb-class>com.ptithcm.ejb.OrderServiceBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            
+            <business-local>com.ptithcm.ejb.OrderService</business-local>
+            
+            <persistence-context-ref>
+                <persistence-context-ref-name>persistence/CosmeticsPU</persistence-context-ref-name>
+                <persistence-unit-name>CosmeticsPU</persistence-unit-name>
+            </persistence-context-ref>
+        </session>
+        
+        <session>
+            <ejb-name>UserServiceBean</ejb-name>
+            <ejb-class>com.ptithcm.ejb.UserServiceBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            
+            <business-local>com.ptithcm.ejb.UserService</business-local>
+            
+            <persistence-context-ref>
+                <persistence-context-ref-name>persistence/CosmeticsPU</persistence-context-ref-name>
+                <persistence-unit-name>CosmeticsPU</persistence-unit-name>
+            </persistence-context-ref>
+        </session>
+        
+        <session>
+            <ejb-name>ReviewServiceBean</ejb-name>
+            <ejb-class>com.ptithcm.ejb.ReviewServiceBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            
+            <business-local>com.ptithcm.ejb.ReviewService</business-local>
+            
+            <persistence-context-ref>
+                <persistence-context-ref-name>persistence/CosmeticsPU</persistence-context-ref-name>
+                <persistence-unit-name>CosmeticsPU</persistence-unit-name>
+            </persistence-context-ref>
+        </session>
+    </enterprise-beans>
+</ejb-jar>

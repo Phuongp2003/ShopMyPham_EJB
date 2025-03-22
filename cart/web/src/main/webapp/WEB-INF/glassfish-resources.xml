@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC 
+    "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" 
+    "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+    <jdbc-connection-pool name="CosmeticsPool"
+        res-type="javax.sql.DataSource"
+        datasource-classname="com.mysql.cj.jdbc.MysqlDataSource">
+        <property name="serverName" value="localhost"/>
+        <property name="portNumber" value="3306"/>
+        <property name="databaseName" value="cosmetics"/>
+        <property name="user" value="root"/>
+        <property name="password" value="admin"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/cosmetics?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
+    </jdbc-connection-pool>
+    
+    <jdbc-resource pool-name="CosmeticsPool"
+        jndi-name="jdbc/cosmetics"/>
+</resources>
