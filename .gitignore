@@ -13,3 +13,4 @@ session-store
 generated
 **/generated
 glassfish-4.1.1/glassfish4/glassfish/domains/domain1/config
+glassfish-4.1.1/glassfish4/glassfish/domains/domain1/config/*
