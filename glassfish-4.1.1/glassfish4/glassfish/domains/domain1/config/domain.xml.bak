@@ -50,6 +50,16 @@
     <managed-executor-service object-type="system-all" jndi-name="concurrent/__defaultManagedExecutorService"></managed-executor-service>
     <managed-scheduled-executor-service object-type="system-all" jndi-name="concurrent/__defaultManagedScheduledExecutorService"></managed-scheduled-executor-service>
     <managed-thread-factory object-type="system-all" jndi-name="concurrent/__defaultManagedThreadFactory"></managed-thread-factory>
+    <jdbc-connection-pool datasource-classname="com.mysql.cj.jdbc.MysqlDataSource" name="CosmeticsPool" res-type="javax.sql.DataSource">
+      <property name="useUnicode" value="true"></property>
+      <property name="user" value="root"></property>
+      <property name="password" value="admin"></property>
+      <property name="characterEncoding" value="UTF-8"></property>
+      <property name="portNumber" value="3306"></property>
+      <property name="databaseName" value="cosmetics"></property>
+      <property name="serverName" value="localhost"></property>
+    </jdbc-connection-pool>
+    <jdbc-resource pool-name="CosmeticsPool" jndi-name="jdbc/cosmetics"></jdbc-resource>
   </resources>
   <servers>
     <server config-ref="server-config" name="server">
@@ -62,6 +72,7 @@
       <resource-ref ref="concurrent/__defaultManagedExecutorService"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedScheduledExecutorService"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedThreadFactory"></resource-ref>
+      <resource-ref ref="jdbc/cosmetics"></resource-ref>
     </server>
   </servers>
   <nodes>

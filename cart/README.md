@@ -2,6 +2,21 @@
 
 ## Cấu hình và triển khai
 
+### 0. Lệnh triển khai nhanh
+
+- Start
+```bash
+.\manage-glassfish.ps1 start cart\web\target\shopmypham-web-1.0.war
+```
+- Redeploy
+```bash
+.\manage-glassfish.ps1 redeploy cart\web\target\shopmypham-web-1.0.war
+```
+- Stop
+```bash
+.\manage-glassfish.ps1 stop
+```
+
 ### 1. Chuẩn bị môi trường
 - JDK 8
 - GlassFish 5
@@ -62,14 +77,10 @@ DataSource Classname: com.mysql.cj.jdbc.MysqlDataSource
 - JNDI Name: jdbc/cosmetics
 - Pool Name: CosmeticsPool
 
-Hoặc sử dụng lệnh asadmin:
+Hoặc nêu sử dunụ glassfish có sẵn, sử dụng lệnh asadmin *(chú ý username và password phù hợp)*:
 ```bash
-./asadmin create-jdbc-connection-pool \
-    --datasourceclassname com.mysql.cj.jdbc.MysqlDataSource \
-    --restype javax.sql.DataSource \
-    --property "user=root:password=yourpassword:databaseName=cosmetics:serverName=localhost:portNumber=3306:useUnicode=true:characterEncoding=UTF-8" \
-    CosmeticsPool
-
+cd glassfish-4.1.1\glassfish4\glassfish\bin
+./asadmin create-jdbc-connection-pool --datasourceclassname com.mysql.cj.jdbc.MysqlDataSource --restype javax.sql.DataSource --property "user=root:password=admin:databaseName=cosmetics:serverName=localhost:portNumber=3306:useUnicode=true:characterEncoding=UTF-8" CosmeticsPool
 ./asadmin create-jdbc-resource --connectionpoolid CosmeticsPool jdbc/cosmetics
 ```
 

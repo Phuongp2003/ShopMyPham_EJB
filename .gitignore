@@ -1,1 +1,14 @@
 **/target
+glassfish-4.1.1/glassfish4/glassfish/domains/domain1/applications
+*.class
+**/*.class
+*.log
+**/*.log
+logs
+**/logs
+osgi-cache
+**/osgi-cache
+session-store
+**/session-store
+generated
+**/generated

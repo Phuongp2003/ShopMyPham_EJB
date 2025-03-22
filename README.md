@@ -1,4 +1,4 @@
-# Demo EJB with maven in VSCode
+# Comestic Shop - EJB with maven in VSCode
 ## Overview
 
 [Placeholder for project overview and description]
@@ -55,25 +55,7 @@
 </details>
 
 <details>
-<summary>Project Structure</summary>
+<summary>Project Detail</summary>
 
-[Placeholder for project structure documentation]
-</details>
-
-<details>
-<summary>Features</summary>
-
-[Placeholder for features list and descriptions]
-</details>
-
-<details>
-<summary>API Documentation</summary>
-
-[Placeholder for API endpoints and usage]
-</details>
-
-<details>
-<summary>Contributing</summary>
-
-[Placeholder for contribution guidelines]
+See [Shop Mỹ Phẩm - EJB Cosmetics Store](./cart/README.md)
 </details>

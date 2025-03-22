@@ -50,12 +50,22 @@
     <managed-executor-service object-type="system-all" jndi-name="concurrent/__defaultManagedExecutorService"></managed-executor-service>
     <managed-scheduled-executor-service object-type="system-all" jndi-name="concurrent/__defaultManagedScheduledExecutorService"></managed-scheduled-executor-service>
     <managed-thread-factory object-type="system-all" jndi-name="concurrent/__defaultManagedThreadFactory"></managed-thread-factory>
+    <jdbc-connection-pool datasource-classname="com.mysql.cj.jdbc.MysqlDataSource" name="CosmeticsPool" res-type="javax.sql.DataSource">
+      <property name="useUnicode" value="true"></property>
+      <property name="user" value="root"></property>
+      <property name="password" value="admin"></property>
+      <property name="characterEncoding" value="UTF-8"></property>
+      <property name="portNumber" value="3306"></property>
+      <property name="databaseName" value="cosmetics"></property>
+      <property name="serverName" value="localhost"></property>
+    </jdbc-connection-pool>
+    <jdbc-resource pool-name="CosmeticsPool" jndi-name="jdbc/cosmetics"></jdbc-resource>
   </resources>
   <servers>
     <server config-ref="server-config" name="server">
       <application-ref ref="__admingui" virtual-servers="__asadmin"></application-ref>
       <application-ref ref="loptinchi-1.0" virtual-servers="server"></application-ref>
-      <application-ref ref="cart-web-1.0" virtual-servers="server"></application-ref>
+      <application-ref ref="shopmypham-web-1.0" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="jms/__defaultConnectionFactory"></resource-ref>
@@ -63,6 +73,7 @@
       <resource-ref ref="concurrent/__defaultManagedExecutorService"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedScheduledExecutorService"></resource-ref>
       <resource-ref ref="concurrent/__defaultManagedThreadFactory"></resource-ref>
+      <resource-ref ref="jdbc/cosmetics"></resource-ref>
     </server>
   </servers>
   <nodes>
@@ -465,17 +476,30 @@
         <engine sniffer="web"></engine>
       </module>
     </application>
-    <application context-root="/cart-web-1.0" object-type="user" name="cart-web-1.0" location="${com.sun.aas.instanceRootURI}/applications/cart-web-1.0/">
+    <application context-root="/shopmypham-web-1.0" object-type="user" name="shopmypham-web-1.0" location="${com.sun.aas.instanceRootURI}/applications/shopmypham-web-1.0/">
       <property name="archiveType" value="war"></property>
-      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/cart-web-1.0/cart-web-1.0.war"></property>
-      <property name="org.glassfish.ejb.container.application_unique_id" value="114203773478305792"></property>
-      <property name="defaultAppName" value="cart-web-1.0"></property>
-      <module name="cart-web-1.0">
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/shopmypham-web-1.0/shopmypham-web-1.0.war"></property>
+      <property name="org.glassfish.ejb.container.application_unique_id" value="114205814089449472"></property>
+      <property name="defaultAppName" value="shopmypham-web-1.0"></property>
+      <module name="shopmypham-web-1.0">
         <engine sniffer="ejb"></engine>
         <engine sniffer="security"></engine>
         <engine sniffer="weld"></engine>
+        <engine sniffer="jpa"></engine>
+        <engine sniffer="resources"></engine>
         <engine sniffer="web"></engine>
       </module>
+      <resources>
+        <jdbc-connection-pool datasource-classname="com.mysql.cj.jdbc.MysqlDataSource" name="java:app/CosmeticsPool" res-type="javax.sql.DataSource">
+          <property name="URL" value="jdbc:mysql://localhost:3306/cosmetics?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"></property>
+          <property name="user" value="root"></property>
+          <property name="password" value="admin"></property>
+          <property name="portNumber" value="3306"></property>
+          <property name="databaseName" value="cosmetics"></property>
+          <property name="serverName" value="localhost"></property>
+        </jdbc-connection-pool>
+        <jdbc-resource pool-name="java:app/CosmeticsPool" jndi-name="java:app/jdbc/cosmetics"></jdbc-resource>
+      </resources>
     </application>
   </applications>
 </domain>

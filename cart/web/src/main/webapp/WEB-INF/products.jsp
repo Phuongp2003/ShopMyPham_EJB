@@ -23,7 +23,7 @@
             <div class="col">
                 <div class="card h-100">
                     <!-- Product Image -->
-                    <img src="${pageContext.request.contextPath}/images/${product.image}" 
+                    <img src="${product.image}" 
                          class="card-img-top product-image" alt="${product.name}">
                     
                     <div class="card-body">

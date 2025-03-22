@@ -5,7 +5,7 @@
     <div class="row">
         <!-- Product Image -->
         <div class="col-md-5">
-            <img src="${pageContext.request.contextPath}/images/${product.image}" 
+            <img src="${product.image}" 
                  class="img-fluid" alt="${product.name}">
         </div>
         

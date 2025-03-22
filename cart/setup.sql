@@ -89,12 +89,12 @@ INSERT INTO users (username, password, full_name, email, phone, address, is_admi
 
 -- Insert sample products with Vietnamese characters
 INSERT INTO products (name, description, price, image, stock) VALUES
-('Son Dưỡng Môi', 'Son dưỡng môi giúp làm mềm và phục hồi môi khô', 150000, 'lipbalm.jpg', 50),
-('Kem Chống Nắng', 'Kem chống nắng SPF 50+ bảo vệ da khỏi tia UV', 350000, 'sunscreen.jpg', 30),
-('Sữa Rửa Mặt', 'Sữa rửa mặt dịu nhẹ làm sạch sâu', 200000, 'cleanser.jpg', 40),
-('Nước Hoa', 'Nước hoa với hương thơm quyến rũ và bền lâu', 1200000, 'perfume.jpg', 20),
-('Phấn Trang Điểm', 'Phấn trang điểm kiềm dầu lâu trôi', 450000, 'powder.jpg', 25),
-('Mascara', 'Mascara chống nước, không lem', 280000, 'mascara.jpg', 35),
-('Serum Vitamin C', 'Serum làm sáng da và chống lão hóa', 550000, 'serum.jpg', 30),
-('Kem Dưỡng Da', 'Kem dưỡng ẩm chuyên sâu', 400000, 'moisturizer.jpg', 40),
-('Nước Tẩy Trang', 'Nước tẩy trang làm sạch sâu, không gây kích ứng', 250000, 'makeup-remover.jpg', 45);
+('Son Dưỡng Môi', 'Son dưỡng môi giúp làm mềm và phục hồi môi khô', 150000, 'https://th.bing.com/th/id/OIP.vP7Q9jMCVU2UY5uyZKwZZAHaE9?w=280&h=187&c=7&r=0&o=5&pid=1.7', 50),
+('Kem Chống Nắng', 'Kem chống nắng SPF 50+ bảo vệ da khỏi tia UV', 350000, 'https://th.bing.com/th/id/OIP.EEpYfgU2XXagU0pgRqIfbQHaHa?w=211&h=211&c=7&r=0&o=5&pid=1.7', 30),
+('Sữa Rửa Mặt', 'Sữa rửa mặt dịu nhẹ làm sạch sâu', 200000, 'https://th.bing.com/th/id/OIP.Agec0cgaWoW6e0kaKDA-cQHaHa?w=179&h=180&c=7&r=0&o=5&pid=1.7', 40),
+('Nước Hoa', 'Nước hoa với hương thơm quyến rũ và bền lâu', 1200000, 'https://toplist.vn/images/800px/nuoc-hoa-391727.jpg', 20),
+('Phấn Trang Điểm', 'Phấn trang điểm kiềm dầu lâu trôi', 450000, 'https://th.bing.com/th/id/OIP.511lIELAuizgVlq5T8BTxwHaHa?w=195&h=195&c=7&r=0&o=5&pid=1.7', 25),
+('Mascara', 'Mascara chống nước, không lem', 280000, 'https://th.bing.com/th/id/OIP.3Ne8PvIkTXS-B974dtxSWAHaHa?w=179&h=180&c=7&r=0&o=5&pid=1.7', 35),
+('Serum Vitamin C', 'Serum làm sáng da và chống lão hóa', 550000, 'https://s.yimg.com/ny/api/res/1.2/SSaWAMTG3pf3havdTL989w--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTQ4MA--/https://media.zenfs.com/en/town_country_721/cedc01383373a100b6e1ca66e263bd25', 30),
+('Kem Dưỡng Da', 'Kem dưỡng ẩm chuyên sâu', 400000, 'https://thelab.vn/wp-content/uploads/2023/03/315485062_5123175817783081_5782749681798378275_n.jpg', 40),
+('Nước Tẩy Trang', 'Nước tẩy trang làm sạch sâu, không gây kích ứng', 250000, 'https://th.bing.com/th/id/OIP.YE0epMX4MLltqZZEYsKcGwHaHa?w=220&h=220&c=7&r=0&o=5&pid=1.7', 45);

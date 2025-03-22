@@ -47,11 +47,9 @@ if ERRORLEVEL 0 goto ok
 echo "Unable to enable extensions"
 exit /B 1
 :ok
+set AS_JAVA=C:\Program Files\Java\jdk1.8.0_202
 call "%~dp0..\config\asenv.bat" 
-if "%AS_JAVA%x" == "x" goto UsePath
 set JAVA="%AS_JAVA%\bin\java"
 goto run
-:UsePath
-set JAVA=java
 :run
 %JAVA% -jar "%~dp0..\lib\client\appserver-cli.jar" %*
