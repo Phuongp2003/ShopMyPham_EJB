@@ -13,7 +13,7 @@ function Stop-GlassFish {
 function Redeploy-Application {
     Write-Output "Undeploying application..."
     $env:AS_JAVA = "C:\Program Files\Java\jdk1.8.0_202"
-    & "glassfish-4.1.1\glassfish4\bin\asadmin.bat" undeploy cart-web-1.0
+    & "glassfish-4.1.1\glassfish4\bin\asadmin.bat" undeploy shopmypham-web-1.0
     Write-Output "Deploying application..."
     $env:AS_JAVA = "C:\Program Files\Java\jdk1.8.0_202"
     & "glassfish-4.1.1\glassfish4\bin\asadmin.bat" deploy $warPath

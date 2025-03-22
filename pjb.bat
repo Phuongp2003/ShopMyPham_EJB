@@ -28,7 +28,7 @@ exit /b 0
 
 :RedeployApplication
 echo Undeploying application...
-call "glassfish-4.1.1\glassfish4\bin\asadmin.bat" undeploy cart-web-1.0
+call "glassfish-4.1.1\glassfish4\bin\asadmin.bat" undeploy shopmypham-web-1.0
 echo Deploying application...
 call "glassfish-4.1.1\glassfish4\bin\asadmin.bat" deploy %1
 exit /b 0

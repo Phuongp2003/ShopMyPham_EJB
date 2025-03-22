@@ -17,7 +17,7 @@ prefix="c" %>
 			rel="stylesheet" />
 		<style>
 			.banner {
-				height: 300px;
+				height: 600px;
 				background-size: cover;
 				background-position: center;
 				margin-bottom: 2rem;

@@ -466,7 +466,7 @@
     <application context-root="/shopmypham-web-1.0" object-type="user" name="shopmypham-web-1.0" location="${com.sun.aas.instanceRootURI}/applications/shopmypham-web-1.0/">
       <property name="archiveType" value="war"></property>
       <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/shopmypham-web-1.0/shopmypham-web-1.0.war"></property>
-      <property name="org.glassfish.ejb.container.application_unique_id" value="114205906327437312"></property>
+      <property name="org.glassfish.ejb.container.application_unique_id" value="114205906327633920"></property>
       <property name="defaultAppName" value="shopmypham-web-1.0"></property>
       <module name="shopmypham-web-1.0">
         <engine sniffer="ejb"></engine>

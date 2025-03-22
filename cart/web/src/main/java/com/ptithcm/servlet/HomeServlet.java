@@ -14,27 +14,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "HomeServlet", urlPatterns = {"/home", "/"})  // Make sure this is the only mapping
+@WebServlet(name = "HomeServlet", urlPatterns = { "/home" }) // Make sure this is the only mapping
 public class HomeServlet extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(HomeServlet.class.getName());
-    
+
     @EJB
     private ProductService productService;
-    
+
     @Override
     public void init() throws ServletException {
         // Set logging level to FINE for more detailed logs
         LOGGER.setLevel(Level.FINE);
         LOGGER.info("Initializing HomeServlet");
         super.init();
-        
+
         try {
             LOGGER.info("Checking ProductService injection");
             if (productService == null) {
                 LOGGER.warning("ProductService was not injected, attempting manual JNDI lookup");
                 InitialContext ctx = new InitialContext();
                 productService = (ProductService) ctx.lookup("java:global/shopmypham-web-1.0/ProductServiceBean");
-                
+
                 if (productService != null) {
                     LOGGER.info("Manual JNDI lookup successful");
                 } else {
@@ -48,7 +48,7 @@ public class HomeServlet extends HttpServlet {
             throw new ServletException("Failed to initialize HomeServlet", e);
         }
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,7 +56,7 @@ public class HomeServlet extends HttpServlet {
             if (productService == null) {
                 throw new ServletException("Không thể kết nối đến dịch vụ sản phẩm. Vui lòng thử lại sau.");
             }
-            
+
             List<Product> products = null;
             try {
                 products = productService.getFeaturedProducts();
@@ -67,16 +67,16 @@ public class HomeServlet extends HttpServlet {
                 LOGGER.severe("Error calling getFeaturedProducts: " + e.getMessage());
                 throw new ServletException("Lỗi khi tải danh sách sản phẩm: " + e.getMessage());
             }
-            
+
             request.setAttribute("products", products);
             request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
-            
+
         } catch (Exception e) {
             Throwable rootCause = e;
             while (rootCause.getCause() != null) {
                 rootCause = rootCause.getCause();
             }
-            
+
             String userMessage;
             if (rootCause.getMessage().contains("Table") && rootCause.getMessage().contains("doesn't exist")) {
                 userMessage = "Lỗi cấu hình database: Bảng dữ liệu chưa được tạo";
@@ -85,7 +85,7 @@ public class HomeServlet extends HttpServlet {
             } else {
                 userMessage = "Lỗi hệ thống: " + rootCause.getMessage();
             }
-            
+
             request.setAttribute("errorTitle", "Lỗi");
             request.setAttribute("errorMessage", userMessage);
             request.setAttribute("errorDetail", rootCause.getMessage());

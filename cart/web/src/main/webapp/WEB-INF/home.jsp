@@ -2,8 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- Banner -->
-<div class="banner" style="background-image: url('${pageContext.request.contextPath}/images/banner.jpg');">
-    <div class="container h-100">
+<div class="banner" style="background-image: url('${pageContext.request.contextPath}/static/images/banner.jpg');">
+    <div class="container h-100" style="background-color: rgba(0, 0, 0, 0.5);">
         <div class="row h-100 align-items-center">
             <div class="col-12 text-center">
                 <h1 class="display-4 text-white fw-bold">Shop Mỹ Phẩm</h1>

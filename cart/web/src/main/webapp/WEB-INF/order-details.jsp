@@ -40,7 +40,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="${pageContext.request.contextPath}/images/${item.product.image}" 
+                                                <img src="${item.product.image}" 
                                                      alt="${item.product.name}" 
                                                      style="width: 50px; height: 50px; object-fit: cover;">
                                                 <div class="ms-3">
