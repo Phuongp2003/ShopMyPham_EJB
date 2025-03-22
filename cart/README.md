@@ -3,18 +3,18 @@
 ## Cấu hình và triển khai
 
 ### 0. Lệnh triển khai nhanh
-
+***Nêu chạy bằng cmd, dùng `pjb` thay cho `pj`***
 - Start
 ```bash
-.\manage-glassfish.ps1 start cart\web\target\shopmypham-web-1.0.war
+.\pj start cart\web\target\shopmypham-web-1.0.war
 ```
 - Redeploy
 ```bash
-.\manage-glassfish.ps1 redeploy cart\web\target\shopmypham-web-1.0.war
+.\pj redeploy cart\web\target\shopmypham-web-1.0.war
 ```
 - Stop
 ```bash
-.\manage-glassfish.ps1 stop
+.\pj stop
 ```
 
 ### 1. Chuẩn bị môi trường
