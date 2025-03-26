@@ -64,7 +64,9 @@ prefix="c" %>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<div class="container">
+			<div
+				class="container"
+				style="height: 100%">
 				<a
 					class="navbar-brand"
 					href="${pageContext.request.contextPath}/"

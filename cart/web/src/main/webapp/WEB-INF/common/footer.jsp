@@ -1,7 +1,7 @@
 </div><!-- Close container from header -->
     
     <footer class="bg-dark text-light py-4 mt-5">
-        <div class="container">
+        <div class="container-wrap">
             <div class="row">
                 <div class="col-md-4">
                     <h5>Shop Mỹ Phẩm</h5>
