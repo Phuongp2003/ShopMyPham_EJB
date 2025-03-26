@@ -41,7 +41,7 @@
     
     <!-- Custom JavaScript -->
     <script>
-        // Add to cart function
+        // Add to cart function with confirmation dialog
         function addToCart(productId) {
             const quantity = document.querySelector(`#quantity-\${productId}`).value;
             const form = document.createElement('form');
@@ -63,6 +63,23 @@
             }
             
             document.body.appendChild(form);
+            
+            // Submit form and handle redirect after success
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                }).then(() => {
+                    if (confirm('Sản phẩm đã được thêm vào giỏ hàng. Bạn có muốn tiếp tục mua sắm?')) {
+                        window.location.href = '${pageContext.request.contextPath}/products';
+                    } else {
+                        window.location.href = '${pageContext.request.contextPath}/cart';
+                    }
+                });
+            });
+            
             form.submit();
         }
         

@@ -13,20 +13,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ProductServlet", urlPatterns = {"/products/*"})
+@WebServlet(name = "ProductServlet", urlPatterns = { "/products/*" })
 public class ProductServlet extends HttpServlet {
-    
+
     @EJB
     private ProductService productService;
-    
+
     @EJB
     private ReviewService reviewService;
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String pathInfo = request.getPathInfo();
-        
+
         try {
             if (pathInfo == null || pathInfo.equals("/")) {
                 // Show product list
@@ -40,12 +40,12 @@ public class ProductServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
     }
-    
+
     private void handleProductList(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Get search parameter
         String search = request.getParameter("search");
-        
+
         // Get products
         List<Product> products;
         if (search != null && !search.trim().isEmpty()) {
@@ -54,43 +54,43 @@ public class ProductServlet extends HttpServlet {
         } else {
             products = productService.getAllProducts();
         }
-        
+
         request.setAttribute("products", products);
         request.getRequestDispatcher("/WEB-INF/products.jsp").forward(request, response);
     }
-    
+
     private void handleProductDetails(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Extract product ID from path
         String pathInfo = request.getPathInfo();
         String[] pathParts = pathInfo.split("/");
-        
+
         if (pathParts.length != 2) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-        
+
         try {
             Long productId = Long.parseLong(pathParts[1]);
             Product product = productService.findById(productId);
-            
+
             if (product == null) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 return;
             }
-            
+
             // Get product reviews
             List<Review> reviews = reviewService.getProductReviews(productId);
-            
+
             request.setAttribute("product", product);
             request.setAttribute("reviews", reviews);
             request.getRequestDispatcher("/WEB-INF/product-details.jsp").forward(request, response);
-            
+
         } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

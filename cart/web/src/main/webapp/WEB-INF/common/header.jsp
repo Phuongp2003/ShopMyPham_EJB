@@ -16,31 +16,49 @@ prefix="c" %>
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 			rel="stylesheet" />
 		<style>
+			nav {
+				height: 56px;
+			}
+			/* Ensure minimum page height */
+			body {
+			    min-height: 100vh;
+			    display: flex;
+			    flex-direction: column;
+			}
+			.container {
+			    flex: 1;
+			    min-height: calc(100vh - 56px); /* Subtract navbar height */
+			}
+
 			.banner {
-				height: 600px;
-				background-size: cover;
-				background-position: center;
-				margin-bottom: 2rem;
+			    height: 600px;
+			    background-size: cover;
+			    background-position: center;
+			    margin-bottom: 2rem;
 			}
 			.product-card {
-				height: 100%;
+			    height: 100%;
 			}
 			.product-image {
-				height: 200px;
-				object-fit: cover;
+			    height: 200px;
+			    object-fit: cover;
 			}
 			.star-rating {
-				color: #ffc107;
+			    color: #ffc107;
 			}
-			.cart-count {
-				position: absolute;
-				top: -8px;
-				right: -8px;
-				background-color: red;
-				color: white;
-				border-radius: 50%;
-				padding: 0.25rem 0.5rem;
-				font-size: 0.75rem;
+			.cart-indicator {
+			    position: relative;
+			    display: inline-block;
+			}
+			.cart-dot {
+			    position: absolute;
+			    top: -5px;
+			    right: -5px;
+			    width: 10px;
+			    height: 10px;
+			    background-color: red;
+			    border-radius: 50%;
+			    display: ${not empty sessionScope.cartCount && sessionScope.cartCount > 0 ? 'block' : 'none'};
 			}
 		</style>
 	</head>
@@ -94,8 +112,11 @@ prefix="c" %>
 									<a
 										class="nav-link"
 										href="${pageContext.request.contextPath}/cart">
-										<i class="fas fa-shopping-cart"></i> Giỏ
-										hàng
+										<span class="cart-indicator">
+											<i class="fas fa-shopping-cart"></i>
+											<span class="cart-dot"></span>
+										</span>
+										Giỏ hàng
 									</a>
 								</li>
 								<li class="nav-item">
@@ -119,7 +140,7 @@ prefix="c" %>
 				</div>
 			</div>
 		</nav>
-		<div class="container">
+		<div class="container-wrap">
 			<c:if test="${not empty error}">
 				<div
 					class="alert alert-danger alert-dismissible fade show"

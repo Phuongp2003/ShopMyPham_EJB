@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <!-- Product Title with Link -->
                         <h5 class="card-title">
-                            <a href="${pageContext.request.contextPath}/product/${product.id}" 
+                            <a href="${pageContext.request.contextPath}/products/${product.id}"
                                class="text-decoration-none text-dark">
                                 ${product.name}
                             </a>
@@ -63,17 +63,12 @@
                             </small>
                         </p>
                         
-                        <!-- Add to Cart Form -->
-                        <div class="d-flex align-items-center">
-                            <input type="number" class="form-control me-2" 
-                                   id="quantity-${product.id}" value="1" min="1" 
-                                   style="width: 80px;">
-                            <button onclick="addToCart('${product.id}')" 
-                                    class="btn btn-primary flex-grow-1"
-                                    ${product.stock > 0 ? '' : 'disabled'}>
-                                <i class="fas fa-cart-plus"></i> 
-                                ${product.stock > 0 ? 'Thêm vào giỏ' : 'Hết hàng'}
-                            </button>
+                        <!-- View Details Button -->
+                        <div class="d-flex justify-content-end">
+                            <a href="${pageContext.request.contextPath}/products/${product.id}"
+                               class="btn btn-primary">
+                                <i class="fas fa-info-circle"></i> Xem chi tiết
+                            </a>
                         </div>
                     </div>
                 </div>
